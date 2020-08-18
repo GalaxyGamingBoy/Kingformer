@@ -1,9 +1,8 @@
 # Kingformer
 This is a game made with godot.
-Also this is avainable to itch.io(<Insert Link Here>)
+Also this is avainable to itch.io(Insert Link Here)
 
-#How to play
-To play do:
+# How to play
 1. Download the repository
 2. Extract it on a folder
 3. Open the folder
