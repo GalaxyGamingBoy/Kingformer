@@ -1,0 +1,60 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Sprites/Player/KingRun/king_run13.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Player/KingRun/king_run15.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Player/KingRun/king_run2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Player/KingRun/king_run7.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Player/KingRun/king_run4.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Player/KingRun/king_run17.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Player/KingRun/king_run1.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Player/KingRun/king_run6.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Player/KingRun/king_run9.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Player/KingRun/king_run16.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Player/KingRun/king_run5.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Player/KingRun/king_run14.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Player/KingRun/king_run3.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Player/KingRun/king_run8.png" type="Texture" id=14]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=15]
+
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 13 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 8 ), ExtResource( 4 ), ExtResource( 14 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 12 ), ExtResource( 2 ), ExtResource( 10 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "Run",
+"speed": 15.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Jump",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 15.0
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 111.244, 150.444 )
+z_index = 5
+script = ExtResource( 15 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2( 0, 125 )
+current = true
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 2.44586, 2.44586 )
+z_index = 5
+frames = SubResource( 1 )
+animation = "Jump"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
