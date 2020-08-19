@@ -34,6 +34,7 @@ position = Vector2( 80, 400 )
 
 [node name="NextLevel" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1360, 656 )
+next_level = "res://Scenes/Level3.tscn"
 
 [node name="Coin" parent="." instance=ExtResource( 4 )]
 position = Vector2( 112, 80 )
@@ -54,6 +55,6 @@ current_level = "res://Scenes/Level2.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Water/Area2D"]
 shape = SubResource( 1 )
-[connection signal="body_entered" from="Coin" to="NextLevel" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Coin" to="Player" method="_on_CoinA_body_entered"]
+[connection signal="body_entered" from="Coin" to="NextLevel" method="_on_Coin_body_entered"]
 [connection signal="body_entered" from="Coin" to="CanvasLayer/UI" method="_on_CoinA_body_entered"]
