@@ -6,28 +6,27 @@
 [ext_resource path="res://Scripts/CoinA.gd" type="Script" id=4]
 
 [node name="CoinA" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = -400.0
-margin_right = -8.0
+[node name="CoinA" type="HBoxContainer" parent="."]
+margin_right = 392.0
 margin_bottom = 128.0
 rect_scale = Vector2( 0.5, 0.5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Coin" type="TextureRect" parent="HBoxContainer"]
+[node name="Coin" type="TextureRect" parent="CoinA"]
 margin_right = 128.0
 margin_bottom = 128.0
 texture = ExtResource( 2 )
 
-[node name="CheckNo" type="TextureRect" parent="HBoxContainer"]
+[node name="CheckNo" type="TextureRect" parent="CoinA"]
 margin_left = 132.0
 margin_right = 260.0
 margin_bottom = 128.0
@@ -35,7 +34,7 @@ rect_min_size = Vector2( 128, 128 )
 texture = ExtResource( 1 )
 expand = true
 
-[node name="CheckYes" type="TextureRect" parent="HBoxContainer"]
+[node name="CheckYes" type="TextureRect" parent="CoinA"]
 margin_left = 264.0
 margin_right = 392.0
 margin_bottom = 128.0

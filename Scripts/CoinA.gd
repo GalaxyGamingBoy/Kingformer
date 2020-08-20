@@ -1,7 +1,7 @@
 extends Control
 
-onready var no = get_node("HBoxContainer/CheckNo")
-onready var yes = get_node("HBoxContainer/CheckYes")
+onready var no = get_node("CoinA/CheckNo")
+onready var yes = get_node("CoinA/CheckYes")
 
 func _ready():
 	no.show()
@@ -9,6 +9,6 @@ func _ready():
 	
 
 
-func _on_CoinA_body_entered(body):
+func _on_Coin_body_entered(body):
 	yes.show()
 	no.hide()

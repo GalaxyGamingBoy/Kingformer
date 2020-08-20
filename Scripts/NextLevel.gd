@@ -1,7 +1,8 @@
 extends Area2D
 
 export(String, FILE, "*.tscn") var next_level
-export(bool)var coin
+export(bool)var coinA
+export(bool)var coinB
 export(bool)var no_coins
 
 func _physics_process(delta):
@@ -12,9 +13,10 @@ func _physics_process(delta):
 				print("Switching to: ", next_level)
 				get_tree().change_scene(next_level)
 			else:
-				if coin:
-					print("Switching to: ", next_level)
-					get_tree().change_scene(next_level)
+				if coinA:
+					if coinB:
+						print("Switching to: ", next_level)
+						get_tree().change_scene(next_level)
 				else:
 					print("No coin Gathered")
 			pass
@@ -24,6 +26,9 @@ func _physics_process(delta):
 
 
 func _on_Coin_body_entered(body):
-	coin = true
+	coinA = true
 	print("Coin gathered")
+	
+	
+
 	

@@ -1,0 +1,4 @@
+[gd_scene format=2]
+
+[node name="CanvasLayer2" type="CanvasLayer"]
+process_priority = 1

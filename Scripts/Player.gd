@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 const UP = Vector2(0, -1)
+const FIREBALL = preload("res://Prefabs/Fireball.tscn")
 var motion = Vector2()
 onready var sprite_path = get_node("Sprite")
 export(int)var max_speed = 300
@@ -9,6 +10,8 @@ export(int)var gravity = 20
 export(int)var acceleration = 50
 export(bool)var not_dead
 export(String, FILE, "*.tscn") var current_level
+var shoot = true
+
 func _ready():
 	not_dead = true
 func _physics_process(delta):
@@ -20,15 +23,30 @@ func _physics_process(delta):
 			motion.x = min(motion.x+acceleration, max_speed)
 			sprite_path.flip_h = false
 			sprite_path.play("Run")
+			if sign($Position2D.position.x) == -1:
+				$Position2D.position.x *= -1
 		elif Input.is_action_pressed("ui_left"):
 			motion.x -= acceleration 
 			motion.x = max(motion.x-acceleration, -max_speed)
 			sprite_path.flip_h = true
 			sprite_path.play("Run")
+			if sign($Position2D.position.x) == 1:
+				$Position2D.position.x *= -1
 		else:
 			motion.x = 0
 			sprite_path.play("Idle")
-		
+		if Input.is_action_just_pressed("ui_shoot"):
+			if shoot:
+				$Shoot.start()
+				shoot = false
+				var fireball = FIREBALL.instance()
+				if sign($Position2D.position.x) == 1:
+					fireball.set_fireball_direction(1)
+				else:
+					fireball.set_fireball_direction(-1)
+				get_parent().add_child(fireball)
+				fireball.position = $Position2D.global_position
+			
 		
 		
 		
@@ -59,3 +77,7 @@ func _on_CoinA_body_entered(body):
 func _on_Timer_timeout():
 	print("Respawning to: ", current_level)
 	get_tree().change_scene(current_level)
+
+
+func _on_Shoot_timeout():
+	shoot = true
